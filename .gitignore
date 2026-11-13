@@ -1,6 +1,39 @@
+# Python and build output
 __pycache__/
-*.pyc
+*.py[cod]
 *.egg-info/
-dist/
 build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and local settings
+.env
+.env.*
+*.corvid-bak
+
+# Personal data: memories, caches and the 0.3 store never belong in the repo
+wiki/
+memories/
+.cache/
 corvid.db
+*.npz
+
+# Development-only files, kept out of the public repo
+tests/
+eval/
+docs/
+CLAUDE.md
+AGENTS.md
+MANIFEST.in
+.claude/
+.agents/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

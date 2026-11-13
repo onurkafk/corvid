@@ -4,36 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "corvid-remember"
-version = "0.3.0"
-description = "Permanent memory layer for AI coding agents"
+version = "0.4.0"
+description = "Memory for your coding agent, across every project: Claude Code and Codex"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
 authors = [{ name = "juraxis" }]
-keywords = ["ai", "memory", "coding-agent", "claude", "codex", "semantic-search"]
+keywords = ["ai", "memory", "coding-agent", "claude-code", "codex", "agent-skills", "hooks"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries",
 ]
-dependencies = [
-    "fastembed>=0.4.0",
-    "sqlite-vec>=0.1.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
-lite = []  # pip install corvid-remember[lite] for keyword-only, no heavy deps
+# corvid search by meaning (bekko-embedding-v1-a25m via ONNX Runtime, about 350 MB with the model,
+# no PyTorch). `corvid install` installs these itself unless --lite; hooks never use them.
+semantic = ["onnxruntime; python_version >= '3.10'", "tokenizers; python_version >= '3.10'",
+            "huggingface_hub; python_version >= '3.10'", "numpy"]
+dev = ["pytest>=7"]
 
 [project.scripts]
 corvid = "corvid:main"
 
 [project.urls]
-Homepage = "https://github.com/juraxis/corvid"
-Repository = "https://github.com/juraxis/corvid"
+Homepage = "https://github.com/onurkafk/corvid"
+Repository = "https://github.com/onurkafk/corvid"
+Changelog = "https://github.com/onurkafk/corvid/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 py-modules = ["corvid"]
 
-[tool.setuptools.package-data]
-"*" = ["skills/**/*.md"]
